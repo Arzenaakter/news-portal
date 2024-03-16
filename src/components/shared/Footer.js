@@ -1,12 +1,4 @@
-"use client";
-import * as React from "react";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import Container from "@mui/material/Container";
-import Button from "@mui/material/Button";
-import Image from "next/image";
-import logo from "@/assets/logo.png";
+import { Box, Button, Container, Typography } from '@mui/material';
 // icons
 import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
@@ -43,24 +35,19 @@ const NavItems = [
   },
 ];
 
-function Navbar() {
-  return (
-    <AppBar position="static" className='bg-black'>
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          <Image src={logo} alt="logo" width={100} height={100} />
-
-          <Box className="w-full text-center">
-            {NavItems.map((item) => (
-              <Link key={item} href={item.pathName}>
-                <Button className="text-white">{item.route}</Button>
-              </Link>
-            ))}
-          </Box>
-          <Box>
-            <Stack direction="row" sx={{" & svg " : {
-                color: "white"
-            }}}>
+const Footer = () => {
+    return (
+      <Box className="bg-black px-2 py-10">
+        <Container>
+          <Box
+          className='w-full text-center'
+            sx={{
+              " & svg ": {
+                color: "white",
+              },
+            }}
+          >
+          
               <IconButton>
                 <FacebookIcon />
               </IconButton>
@@ -76,11 +63,19 @@ function Navbar() {
               <IconButton>
                 <YouTubeIcon />
               </IconButton>
-            </Stack>
+           
           </Box>
-        </Toolbar>
-      </Container>
-    </AppBar>
-  );
-}
-export default Navbar;
+          <Box className="w-full text-center">
+            {NavItems.map((item) => (
+              <Link key={item} href={item.pathName}>
+                <Button className="text-white">{item.route}</Button>
+              </Link>
+            ))}
+                </Box>
+                <Typography variant='body2' color='gray' textAlign='center'> @2024 The News Portal. Design by Arzena</Typography>
+        </Container>
+      </Box>
+    );
+};
+
+export default Footer;
